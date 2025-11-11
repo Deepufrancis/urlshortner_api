@@ -21,10 +21,12 @@ connectDB();
 // Middlewares
 app.use(
   cors({
-    origin: "*", // or specify your frontend URL here
-    methods: ["GET", "POST"],
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

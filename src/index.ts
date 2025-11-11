@@ -16,7 +16,7 @@ import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./config/swagger";
 
 const app = express();
-const PORT = process.env.PORT || "https://urlshortner-api.onrender.com";
+const PORT = process.env.PORT || getEnvVariable("PORT");
 
 // Connect Database
 connectDB();

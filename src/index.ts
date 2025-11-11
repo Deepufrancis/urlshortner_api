@@ -4,15 +4,12 @@ console.log("BASE_URL loaded from .env:", process.env.BASE_URL);
 
 import express from "express";
 import cors from "cors";
-import { connectDB } from "./config/db";
-
-
-import { getEnvVariable } from "../src/utils/helpers";
 import cookieParser from "cookie-parser";
-import urlRoutes from "./routes/UrlRoutes";
-
-// ✅ import swagger
 import swaggerUi from "swagger-ui-express";
+
+import { connectDB } from "./config/db";
+import { getEnvVariable } from "./utils/helpers";
+import urlRoutes from "./routes/UrlRoutes";
 import swaggerSpec from "./config/swagger";
 
 const app = express();
@@ -22,18 +19,22 @@ const PORT = process.env.PORT || getEnvVariable("PORT");
 connectDB();
 
 // Middlewares
-app.use(cors());
-
+app.use(
+  cors({
+    origin: "*", // or specify your frontend URL here
+    methods: ["GET", "POST"],
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// ✅ Swagger route (before API routes)
+// ✅ Swagger route
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Root route
-app.get("/", async (_req, res) => {
+app.get("/", (_req, res) => {
   res.send("Hai there, API is running...");
 });
 

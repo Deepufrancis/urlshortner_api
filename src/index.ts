@@ -4,7 +4,9 @@ console.log("BASE_URL loaded from .env:", process.env.BASE_URL);
 
 import express from "express";
 import cors from "cors";
-import { connectDB } from "../src/config/db";
+import { connectDB } from "./config/db";
+
+
 import { getEnvVariable } from "../src/utils/helpers";
 import cookieParser from "cookie-parser";
 import urlRoutes from "./routes/UrlRoutes";

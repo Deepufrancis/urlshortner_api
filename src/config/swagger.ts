@@ -13,12 +13,12 @@ const options: swaggerJsdoc.Options = {
     },
     servers: [
       {
-        url: process.env.BASE_URL || "https://localhost:3000",
+        url: process.env.BASE_URL || "https://urlshortner-api-q5t6.onrender.com",
         description: "Local server",
       },
     ],
   },
-  apis: ["./src/routes/*.ts"], // 👈 path to your route files
+  apis: ["./src/routes/*.ts"], 
 };
 
 const swaggerSpec = swaggerJsdoc(options);

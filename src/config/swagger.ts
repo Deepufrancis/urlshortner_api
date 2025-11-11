@@ -13,7 +13,7 @@ const options: swaggerJsdoc.Options = {
     },
     servers: [
       {
-        url: process.env.BASE_URL || "https://urlshortner-api-q5t6.onrender.com",
+        url: "https://urlshortner-api-q5t6.onrender.com",
         description: "Local server",
       },
     ],
